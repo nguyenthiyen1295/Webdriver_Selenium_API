@@ -39,6 +39,12 @@ public class topic_001_Check_Enviroment3 {
 		System.out.println(title);
 		
 	}
+	@Test
+	public void f11() {
+		String title = driver.getTitle();
+		System.out.println(title);
+		
+	}
 
 	@AfterClass
 	public void afterClass() {
