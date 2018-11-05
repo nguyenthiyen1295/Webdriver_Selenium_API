@@ -11,4 +11,9 @@ public interface Form_Interfaces {
     String txt_pwd_Xpath = "//input[@id='pass']";
     String label_errorInvalidemail = "//div[@id ='advice-validate-email-email']";
     String label_errorInvalidPwd = "//div[@id ='advice-validate-password-pass']";
+    
+    //Upload ảnh.
+    String ip_Upload_Img = "//input[@name='uploadfile_0']";
+    String chbox_accept = "//input[@id='terms']";
+    String btn_send = "//button[@id='submitbutton']";
 }
