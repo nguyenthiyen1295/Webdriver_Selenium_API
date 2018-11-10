@@ -146,9 +146,8 @@ public class TOPIC_02_EXERCISE {
 	  }
 
   @AfterTest
-  public void afterTest() {
-  } 
-  public int random() {
+  public void afterTest() {    } 
+   public int random() {
 	  Random a = new Random();
 	  int number= a.nextInt(999999);
 	  return number;
