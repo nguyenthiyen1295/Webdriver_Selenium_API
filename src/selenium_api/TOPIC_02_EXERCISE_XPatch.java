@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 
-public class TOPIC_02_EXERCISE {
+public class TOPIC_02_EXERCISE_XPatch {
 	WebDriver driver;
   @BeforeTest
   public void beforeTest() {
