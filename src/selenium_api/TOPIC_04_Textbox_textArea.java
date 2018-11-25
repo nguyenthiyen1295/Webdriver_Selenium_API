@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -32,9 +33,9 @@ public class TOPIC_04_Textbox_textArea {
 	By SubmitByButton = By.xpath("//input[@value='Submit']");
 	@BeforeClass
 	public void beforeClass() {
-		System.setProperty("webdriver.chrome.driver", ".\\lib\\chromedriver.exe");
-		driver = new ChromeDriver();
-	    //driver = new FirefoxDriver();
+		//System.setProperty("webdriver.chrome.driver", ".\\lib\\chromedriver.exe");
+		//driver = new ChromeDriver();
+	    driver = new FirefoxDriver();
 		driver.get("http://demo.guru99.com/v4");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -92,7 +93,7 @@ public class TOPIC_04_Textbox_textArea {
 		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Customer Name']/following-sibling::td")).getText(), newCustomerID);
 		System.out.println("New:  "+driver.findElement(By.xpath("//td[text()='Customer Name']/following-sibling::td")).getText());
 		
-		//Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Birthdate']/following-sibling::td")).getText(), newDate);
+		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Birthdate']/following-sibling::td")).getText(), newDate);
 		System.out.println("New:  "+driver.findElement(By.xpath("//td[text()='Birthdate']/following-sibling::td")).getText());
 		
 		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='Address']/following-sibling::td")).getText(), newAddress);
@@ -140,7 +141,6 @@ public class TOPIC_04_Textbox_textArea {
 	@AfterClass
 	public void afterClass() {
 		
-	
 	}
 	public int random() {
 		Random random = new Random();
