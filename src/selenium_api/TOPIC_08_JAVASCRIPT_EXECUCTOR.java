@@ -55,7 +55,6 @@ public class TOPIC_08_JAVASCRIPT_EXECUCTOR {
     
 	}
 	
-	@Test
     public void TC_02() throws InterruptedException { 
 		driver.get("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_input_disabled");
 		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@name='iframeResult']")));
@@ -71,6 +70,54 @@ public class TOPIC_08_JAVASCRIPT_EXECUCTOR {
 	  WebElement message = driver.findElement(By.xpath("//h2[text()='Your input was received as:']//following-sibling::div[contains(text(),'fname')]"));
 	  Assert.assertTrue(message.getText().contains("Selenium")&&message.getText().contains("online 07"));
 	}
+	
+	@Test(invocationCount = 5)
+    public void TC_03() throws InterruptedException { 
+		 String firstname ="Selenium", midlename ="online",lastname = "007", email ="selenium_online"+Commons.random()+"@gmail.com", password ="123123";
+
+		driver.get("http://live.guru99.com/");
+		WebElement myAccount = driver.findElement(By.xpath("//div[@class='footer']//a[text()='My Account']"));
+		Commons.clickToElementByJS(driver, myAccount);
+		Thread.sleep(3000);
+		
+		WebElement createAccount = driver.findElement(By.xpath("//a[@title='Create an Account']"));
+		Commons.clickToElementByJS(driver, createAccount);
+		Thread.sleep(3000);
+        
+		 WebElement firstName = driver.findElement(By.xpath("//input[@id='firstname']"));
+		 WebElement midleName = driver.findElement(By.xpath("//input[@id='middlename']"));
+		 WebElement lastName = driver.findElement(By.xpath("//input[@id='lastname']"));
+		 WebElement emailAdress =driver.findElement(By.xpath("//input[@id='email_address']"));
+		 WebElement passWord = driver.findElement(By.xpath("//input[@id='password']"));
+		 WebElement confirm = driver.findElement(By.xpath("//input[@id='confirmation']"));
+		 WebElement checkBox = driver.findElement(By.xpath("//input[@id='is_subscribed']"));
+		 WebElement register = driver.findElement(By.xpath("//span[contains(text(),'Register')]"));
+		 
+		 Commons.sendkeyToElementByJS(driver, firstName,firstname);
+		 Commons.sendkeyToElementByJS(driver, midleName,midlename);
+		 Commons.sendkeyToElementByJS(driver, lastName,lastname);
+		 Commons.sendkeyToElementByJS(driver, emailAdress,email);
+		 Commons.sendkeyToElementByJS(driver, passWord,password);
+		 Commons.sendkeyToElementByJS(driver, confirm,password);
+		 Commons.scrollToBottomPage(driver);
+		 Commons.clickToElementByJS(driver, checkBox);
+		 Commons.clickToElementByJS(driver, register);
+		 Thread.sleep(4000);
+		 
+		String message = (String) Commons.executeForBrowser(driver, "return document.documentElement.innerText");
+		Assert.assertTrue(message.contains("Thank you for registering with Main Website Store."));
+		 
+		
+		 WebElement Account = driver.findElement(By.xpath("//div[@class='account-cart-wrapper']//span[text()='Account']"));
+		 WebElement logOut = driver.findElement(By.xpath("//div[@id='header-account']//a[text()='Log Out']"));
+		 Commons.clickToElementByJS(driver, Account);
+		 Thread.sleep(3000);
+		 Commons.clickToElementByJS(driver, logOut);
+		 Thread.sleep(10000);
+		 
+		Assert.assertTrue(driver.findElement(By.xpath("//h2[contains(text(),'This is demo site for')]")).isDisplayed());
+	}
+	
 	@AfterClass
 	public void afterClass() {
 		
