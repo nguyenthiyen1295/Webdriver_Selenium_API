@@ -2,13 +2,12 @@ package selenium_api;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -47,7 +46,7 @@ public class TOPIC_04_Textbox_textArea {
 		newState ="Hai chau";
 		newPin = "123123";
 		newPhone = "123123123";
-		newEmail = "abc"+random()+"@gmail.com";
+		newEmail = "abc"+Commons.random()+"@gmail.com";
 		Password ="123123";
 		
 
@@ -56,7 +55,7 @@ public class TOPIC_04_Textbox_textArea {
 		editState ="Hai chau 1";
 		editPin = "111111";
 		editPhone = "321321";
-		editEmail = "abc"+random()+"@gmail.com";
+		editEmail = "abc"+Commons.random()+"@gmail.com";
 		}
 
 	@Test
@@ -141,11 +140,6 @@ public class TOPIC_04_Textbox_textArea {
 	@AfterClass
 	public void afterClass() {
 		
-	}
-	public int random() {
-		Random random = new Random();
-		int number= random.nextInt(999999);
-		return number;
 	}
 
 }

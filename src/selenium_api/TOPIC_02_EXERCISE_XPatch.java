@@ -5,11 +5,12 @@ import org.testng.annotations.BeforeTest;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-import org.junit.Assert;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 
 public class TOPIC_02_EXERCISE_XPatch {
@@ -113,7 +114,7 @@ public class TOPIC_02_EXERCISE_XPatch {
  
  @Test//Test Script 06: Login with Password incorrect
  public void TC_006_Create_Account() {   
-	 String firstname ="Selenium", midlename ="online",lastname = "007", email ="selenium_online"+random()+"@gmail.com", password ="123123";
+	 String firstname ="Selenium", midlename ="online",lastname = "007", email ="selenium_online"+Commons.random()+"@gmail.com", password ="123123";
 	 
   //Step 1:Click on link "My Account" to login page
 	  driver.findElement(By.xpath("//div[@class ='footer']//div[@class ='links']//a[text()='My Account']")).click();
@@ -143,15 +144,13 @@ public class TOPIC_02_EXERCISE_XPatch {
 	 //Step 7: Check trang homepage
 	  Assert.assertTrue(driver.findElement(By.xpath("//h2[contains(text(),'This is demo site for')]")).isDisplayed());
 	  
+	  
+	  
 	  }
 
   @AfterTest
   public void afterTest() {    } 
-   public int random() {
-	  Random a = new Random();
-	  int number= a.nextInt(999999);
-	  return number;
-  }
+   
 
 }
 

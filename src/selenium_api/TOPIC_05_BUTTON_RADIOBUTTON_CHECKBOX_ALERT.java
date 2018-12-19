@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import selenium_api.Commons;
 
 public class TOPIC_05_BUTTON_RADIOBUTTON_CHECKBOX_ALERT {
 	WebDriver driver;
@@ -29,38 +30,38 @@ public class TOPIC_05_BUTTON_RADIOBUTTON_CHECKBOX_ALERT {
 	  //myAccount.click();
 	  
 	  //ClickByJavaScript
-	  clickButtonByJavaScript(myAccount);
+	  Commons.clickButtonByJavaScript(driver,myAccount);
 	  Assert.assertEquals(driver.getTitle(), "Customer Login");
 	  WebElement createAccount = driver.findElement(By.xpath("//a[@title='Create an Account']"));
 	  
 	  //click create account
-      clickButtonByJavaScript(createAccount);
+	  Commons.clickButtonByJavaScript(driver,createAccount);
       Assert.assertEquals(driver.getCurrentUrl(),"http://live.guru99.com/index.php/customer/account/create/");
   }
 
   public void TC_002_clickCheckBox() throws InterruptedException {
 	  driver.get("https://demos.telerik.com/kendo-ui/styling/checkboxes");
 	  WebElement dozonCheckbox = driver.findElement(By.xpath("//label[contains(text(),'Dual-zone air conditioning')]//preceding-sibling::input"));
-	  clickButtonByJavaScript(dozonCheckbox);
+	  Commons.clickButtonByJavaScript(driver,dozonCheckbox);
 	  Thread.sleep(3000);
-	  clickButtonByJavaScript(dozonCheckbox);
+	  Commons.clickButtonByJavaScript(driver,dozonCheckbox);
   }
   
    public void TC_003_clickRadioButton() throws InterruptedException {
 	  driver.get("http://demos.telerik.com/kendo-ui/styling/radios");
 	WebElement radioItem = driver.findElement(By.xpath("//label[contains(text(),'2.0 Petrol, 147kW')]//preceding-sibling::input"));
 	if(!radioItem.isSelected()) {
-		clickButtonByJavaScript(radioItem);
+		Commons.clickButtonByJavaScript(driver,radioItem);
 	}
 	Assert.assertTrue(radioItem.isSelected());
 	//unclick
-	clickButtonByJavaScript(radioItem);
+	Commons.clickButtonByJavaScript(driver,radioItem);
 	}
   
   public void TC_004_jsAlert() throws InterruptedException {
 	  driver.get("https://daominhdam.github.io/basic-form/index.html"); 
 	  WebElement jsAlert = driver.findElement(By.xpath("//button[contains(text(),'Click for JS Alert')]"));
-	  clickButtonByJavaScript(jsAlert);
+	  Commons.clickButtonByJavaScript(driver,jsAlert);
 	  Alert alert = driver.switchTo().alert();
 	  Assert.assertEquals(alert.getText(), "I am a JS Alert");
 	  Thread.sleep(3000);
@@ -72,7 +73,7 @@ public class TOPIC_05_BUTTON_RADIOBUTTON_CHECKBOX_ALERT {
   public void TC_005_jsAlertCancel() throws InterruptedException {
 	  driver.get("https://daominhdam.github.io/basic-form/index.html"); 
 	  WebElement jsAlert = driver.findElement(By.xpath("//button[contains(text(),'Click for JS Confirm')]"));
-	  clickButtonByJavaScript(jsAlert);
+	  Commons.clickButtonByJavaScript(driver,jsAlert);
 	  Alert alert = driver.switchTo().alert();
 	  Assert.assertEquals(alert.getText(), "I am a JS Confirm");
 	  Thread.sleep(3000);
@@ -83,9 +84,9 @@ public class TOPIC_05_BUTTON_RADIOBUTTON_CHECKBOX_ALERT {
   @Test
   public void TC_006_jsPrompt() throws InterruptedException {
 	  driver.get("https://daominhdam.github.io/basic-form/index.html"); 
-	  scrollByJavaScript(driver.findElement(By.xpath("//a[contains(text(),'Hover over me')]")));
+	  Commons.scrollByJavaScript(driver,driver.findElement(By.xpath("//a[contains(text(),'Hover over me')]")));
 	  WebElement jsAlert = driver.findElement(By.xpath("//button[contains(text(),'Click for JS Prompt')]"));
-	  clickButtonByJavaScript(jsAlert);
+	  Commons.clickButtonByJavaScript(driver,jsAlert);
 	  Alert alert = driver.switchTo().alert();
 	  String name = "yennguyen";
 	  alert.sendKeys(name);
@@ -98,14 +99,6 @@ public class TOPIC_05_BUTTON_RADIOBUTTON_CHECKBOX_ALERT {
   @AfterClass
   public void afterClass() {
   }
-  public void clickButtonByJavaScript(WebElement element) {
-	  JavascriptExecutor je = (JavascriptExecutor)driver;
-	  je.executeScript("arguments[0].click();", element);	  
-  }
   
-  public void scrollByJavaScript(WebElement element) {
-	  JavascriptExecutor je = (JavascriptExecutor)driver;
-	  je.executeScript("arguments[0].scrollIntoView(true);", element);	  
-  }
   
 }
