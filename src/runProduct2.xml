@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <suite name="ETS Suite">
+    <suite-files>
+        <suite-file path="runProduct.xml" />
+        <suite-file path="runUser.xml" />
+    </suite-files>
+</suite> 

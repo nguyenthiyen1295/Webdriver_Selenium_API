@@ -17,7 +17,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class TestNG_05_LoopTestCases {
+public class TestNG_04 {
 	WebDriver driver;
 	@Parameters("browser")
 	@BeforeTest
@@ -49,7 +49,7 @@ public class TestNG_05_LoopTestCases {
 		}
 	@Parameters({"email","pass"})
 	 @Test(invocationCount=3)
-	  public void TC_01_Logintosystem(String email, String pass) throws InterruptedException {
+	  public void TC_01_Logintosystem(String email, String pass) {
 		  driver.get("http://live.guru99.com/index.php/customer/account/login/");
 		  driver.findElement(By.xpath("//input[@id='email']")).clear();
 		  driver.findElement(By.xpath("//input[@id='email']")).sendKeys(email);
@@ -60,10 +60,6 @@ public class TestNG_05_LoopTestCases {
 		  Assert.assertTrue(driver.findElement(By.xpath("//h1[text()='My Dashboard']")).isDisplayed());
 		  Assert.assertTrue(driver.findElement(By.xpath("//div[@class='box-content']/p[contains(.,'"+email+"')]")).isDisplayed());
 
-		  driver.findElement(By.xpath("//span[@class='label'][contains(text(),'Account')]")).click();
-		  driver.findElement(By.xpath("//a[@title='Log Out']")).click();
-		  Thread.sleep(5000);
-		  
 	  }
   @AfterClass
   public void afterClass() {

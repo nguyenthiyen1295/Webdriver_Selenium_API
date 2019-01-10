@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Selenium Advanced Online" parallel="test">
+<parameter name ="browser" value="chrome" /> 
+  <parameter name ="email" value="yennt.lapurema121@gmail.com" /> 
+  <parameter name ="pass" value="111111" /> 
+  <test name="run on chrome"> 
+    <classes>
+      <class name="TestNG.TestNG_01_Annotation" />   
+    </classes>
+  </test> 
+  
+  <!--<test name="run on firefox">
+  <parameter name ="browser" value="firefox" /> 
+    <classes>
+      <class name="TestNG.TestNG_05_LoopTestCases" />  
+    </classes>
+  </test>
+  <test name="run on chrome headless">
+ <parameter name ="browser" value="chromeheadless" />
+    <classes>
+      <class name="TestNG.TestNG_05_LoopTestCases" />  
+    </classes>
+  </test>-->
+</suite> 
