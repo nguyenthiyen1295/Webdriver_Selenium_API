@@ -13,6 +13,7 @@ public class GeneralAction {
 	public static void moveOver(WebDriver driver, String xpath) {
 		WebElement a = driver.findElement(By.xpath(xpath));
 		  Actions builder = new Actions(driver);
+		// move chuột đến element đó
 		  Action moveOver = builder.moveToElement(a).build();
 		  moveOver.perform();
 		  a.click();
